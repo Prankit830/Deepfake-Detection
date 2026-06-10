@@ -1,0 +1,13 @@
+{
+  "seeds": [
+    42,
+    123,
+    2024
+  ],
+  "epochs": 3,
+  "tta": true,
+  "fixed_split": true,
+  "split_seed": 42,
+  "bootstrap_n": 1000,
+  "force": false
+}

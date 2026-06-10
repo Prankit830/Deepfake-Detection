@@ -1,0 +1,14 @@
+torch
+torchvision
+lightning
+torchmetrics
+scikit-learn
+pillow
+numpy
+pandas
+matplotlib
+opencv-python
+tqdm
+kagglehub
+imagehash
+timm

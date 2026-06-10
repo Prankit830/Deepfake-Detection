@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-05-25 18:16:55",
+  "description": "Focused package for baseline comparison, ablation study, external baselines, and external dataset evaluation.",
+  "included_variants": [
+    "freqnet_like_baseline",
+    "f3net_like_baseline",
+    "mesonet_baseline",
+    "efficientnet_b4_baseline",
+    "convnext_tiny_baseline",
+    "vit_b16_baseline",
+    "swin_tiny_baseline",
+    "xception_baseline",
+    "spatial_baseline",
+    "spatial_frequency",
+    "spatial_frequency_patch",
+    "no_counterfactual",
+    "no_domain",
+    "final"
+  ],
+  "number_of_files": 66
+}

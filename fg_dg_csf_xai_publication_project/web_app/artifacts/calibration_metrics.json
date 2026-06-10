@@ -1,0 +1,10 @@
+{
+  "temperature": 0.825527012348175,
+  "n_samples": 8000,
+  "ece_before_temperature": 0.014398974884301467,
+  "ece_after_temperature": 0.006754743844503513,
+  "brier_before_temperature": 0.01583415631201337,
+  "brier_after_temperature": 0.016101555496689065,
+  "ece": 0.006754743844503513,
+  "brier": 0.016101555496689065
+}

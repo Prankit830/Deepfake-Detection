@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FG-DG-CSF-XAI Deepfake Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="page">
+    <header class="hero">
+        <div>
+            <h1>FG-DG-CSF-XAI Deepfake Image Detector</h1>
+            <p>
+                Upload an image to classify it as <b>Real</b> or <b>Fake</b>.
+                The system returns calibrated probabilities, logits, Grad-CAM, FFT magnitude map,
+                and image-specific explanation text.
+            </p>
+        </div>
+        <div class="status-card">
+            <h3>Server Status</h3>
+            {% if detector.loaded %}
+                <p class="ok">Model loaded</p>
+                <p><b>Temperature:</b> {{ "%.4f"|format(detector.temperature) }}</p>
+                <p><b>Model ECE:</b>
+                    {% if detector.model_ece is not none %}
+                        {{ "%.4f"|format(detector.model_ece) }}
+                    {% else %}
+                        Not available
+                    {% endif %}
+                </p>
+                <p><b>Model Brier:</b>
+                    {% if detector.model_brier is not none %}
+                        {{ "%.4f"|format(detector.model_brier) }}
+                    {% else %}
+                        Not available
+                    {% endif %}
+                </p>
+            {% else %}
+                <p class="error">Model not loaded</p>
+                <p>{{ detector.error }}</p>
+            {% endif %}
+        </div>
+    </header>
+
+    <section class="upload-card">
+        <h2>Upload Image</h2>
+        <form id="uploadForm">
+            <label class="file-box">
+                <input type="file" name="image" id="imageInput" accept="image/*" required>
+                <span>Select image</span>
+            </label>
+
+            <div id="previewBox" class="preview-box hidden">
+                <img id="previewImg" src="" alt="preview">
+            </div>
+
+            <label class="label-row">
+                Optional true label for single-image Brier:
+                <select name="known_label" id="knownLabel">
+                    <option value="unknown">Unknown</option>
+                    <option value="real">Real</option>
+                    <option value="fake">Fake</option>
+                </select>
+            </label>
+
+            <button type="submit" id="submitBtn">Analyze Image</button>
+        </form>
+    </section>
+
+    <section id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Analyzing image...</p>
+    </section>
+
+    <section id="result" class="result hidden">
+        <div class="result-grid">
+            <div class="prediction-card">
+                <h2 id="predLabel"></h2>
+                <p id="confidence"></p>
+                <div class="prob-bars">
+                    <label>Real probability</label>
+                    <div class="bar"><div id="realBar"></div></div>
+                    <p id="realProb"></p>
+
+                    <label>Fake probability</label>
+                    <div class="bar"><div id="fakeBar"></div></div>
+                    <p id="fakeProb"></p>
+                </div>
+            </div>
+
+            <div class="metrics-card">
+                <h3>Calibration / Logits</h3>
+                <table>
+                    <tbody>
+                    <tr><td>Temperature</td><td id="temperature"></td></tr>
+                    <tr><td>Raw logits</td><td id="rawLogits"></td></tr>
+                    <tr><td>Calibrated logits</td><td id="calLogits"></td></tr>
+                    <tr><td>Model ECE</td><td id="modelEce"></td></tr>
+                    <tr><td>Model Brier</td><td id="modelBrier"></td></tr>
+                    <tr><td>Single-image Brier</td><td id="singleBrier"></td></tr>
+                    <tr><td>Single-image calibration error</td><td id="singleCalError"></td></tr>
+                    </tbody>
+                </table>
+                <p class="note" id="metricNote"></p>
+            </div>
+        </div>
+
+        <div class="explanation-card">
+            <h3>Explanation</h3>
+            <p id="explanation"></p>
+            <p><b>Highlighted region:</b> <span id="regionText"></span></p>
+            <p><b>Cues:</b> <span id="cueText"></span></p>
+        </div>
+
+        <div class="visual-grid">
+            <div>
+                <h3>Input</h3>
+                <img id="inputImage" src="" alt="input">
+            </div>
+            <div>
+                <h3>Grad-CAM Heatmap</h3>
+                <img id="gradcamImage" src="" alt="gradcam">
+            </div>
+            <div>
+                <h3>FFT Magnitude Map</h3>
+                <img id="fftImage" src="" alt="fft">
+            </div>
+        </div>
+
+        <div class="combined-card">
+            <h3>Combined Explanation Figure</h3>
+            <img id="combinedImage" src="" alt="combined">
+        </div>
+    </section>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

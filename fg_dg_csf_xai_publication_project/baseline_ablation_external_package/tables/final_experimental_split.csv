@@ -1,0 +1,4 @@
+Split,Sources,Total,Real,Fake
+Train,Dataset A + Dataset B,60000,30000,30000
+Validation,Dataset A + Dataset B,8000,4000,4000
+Unseen Test,Dataset C only,15000,7500,7500

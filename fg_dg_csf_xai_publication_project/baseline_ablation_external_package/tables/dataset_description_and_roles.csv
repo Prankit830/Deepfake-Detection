@@ -1,0 +1,10 @@
+Dataset,Role,Split,Total,Real,Fake
+Dataset A: manjilkarki/deepfake-and-real-images,Training source domain,train,140002,70001,70001
+Dataset A: manjilkarki/deepfake-and-real-images,Training source domain,val,39428,19787,19641
+Dataset A: manjilkarki/deepfake-and-real-images,Training source domain,test,10905,5413,5492
+Dataset B: xhlulu/140k-real-and-fake-faces,Training source domain,train,100000,50000,50000
+Dataset B: xhlulu/140k-real-and-fake-faces,Training source domain,val,20000,10000,10000
+Dataset B: xhlulu/140k-real-and-fake-faces,Training source domain,test,20000,10000,10000
+Dataset C: shivamardeshna image forensics,Unseen test domain,train,160002,80001,80001
+Dataset C: shivamardeshna image forensics,Unseen test domain,val,49428,24787,24641
+Dataset C: shivamardeshna image forensics,Unseen test domain,test,20905,10413,10492
