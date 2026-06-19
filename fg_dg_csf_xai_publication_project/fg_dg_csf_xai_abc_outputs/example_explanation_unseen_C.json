@@ -1,0 +1,9 @@
+{
+  "image_path": "/root/.cache/kagglehub/datasets/shivamardeshna/real-and-fake-images-dataset-for-image-forensics/versions/1/Data Set 4/Data Set 4/test/real/real_3406.jpg",
+  "prediction": "Real",
+  "real_probability": 0.9909488558769226,
+  "fake_probability": 0.009051192551851273,
+  "region_text": "lower face / mouth-chin region, concentrated near the right side",
+  "explanation": "The model predicts REAL with confidence 0.991. The strongest visual evidence appears around the lower face / mouth-chin region, concentrated near the right side. The highlighted regions may contain blending artifacts, texture inconsistency, unnatural edges, or frequency-domain generator traces.",
+  "figure_path": "/content/fg_dg_csf_xai_abc_outputs/figures/gradcam_explanation_unseen_C.png"
+}
